@@ -7,6 +7,7 @@ from ast import literal_eval
 import inspect
 import os.path
 import re
+import sys
 
 from obspy import read, read_inventory
 from obspy.signal.spectral_estimation import PPSD
@@ -92,6 +93,8 @@ def run(command, pdb=False, **args):
             print
             # ...then start the debugger in post-mortem mode.
             pdb.pm()
+
+        sys.excepthook = info
     fmap = {'add': add_data_files_to_pssd,
             'plot': plot,
             'timeplot': plot_temporal,
@@ -116,8 +119,8 @@ def add_options(parser, func, ignore=(), mandatory=()):
                                     help=msg)
             else:
                 parser.add_argument(
-                        '--' + kw.replace('_', '-'), type=literal_eval,
-                        default=SUPPRESS, help=msg)
+                    '--' + kw.replace('_', '-'), type=literal_eval,
+                    default=SUPPRESS, help=msg)
 
 
 def run_cmdline():
