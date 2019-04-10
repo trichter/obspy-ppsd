@@ -150,6 +150,7 @@ def run_cmdline():
     add_options(p_plot3, PPSD.plot_spectrogram)
     p_add.add_argument('data', nargs='+', help='data files')
     p_add.add_argument('-i', '--inventory', help='inventory file')
+    p_add.add_argument('-f', '--format', help='format of data files')
     p_plot1.add_argument('ppsd', nargs='+', help='PPSD files in npz format')
     p_plot2.add_argument('ppsd', nargs='+', help='PPSD files in npz format')
     p_plot3.add_argument('ppsd', nargs='+', help='PPSD files in npz format')
