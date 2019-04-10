@@ -32,7 +32,6 @@ def add_data_files_to_pssd(data, inventory=None, format=None, output='.',
                            **kwargs):
     inv = None
     ppsds = {}
-    print('process files')
     for fname in tqdm(data):
         stream = read(fname, format=format)
         for tr in stream:
@@ -48,10 +47,8 @@ def add_data_files_to_pssd(data, inventory=None, format=None, output='.',
                 else:
                     ppsds[id_] = PPSD(tr.stats, inv, **kwargs)
             ppsds[id_].add(tr)
-    print('write results')
-    for id_, ppsd in (tqdm(ppsds.items())):
-        fname = os.path.join(output, NPZFNAME.format(id_))
-        ppsd.save_npz(fname)
+            fname_out = os.path.join(output, NPZFNAME.format(id_))
+            ppsds[id_].save_npz(fname_out)
 
 
 def plot(ppsd,  output='.', **kwargs):
