@@ -124,7 +124,7 @@ def _add_options(parser, func, func2=None):
             match = re.search(pattern, doc, flags=re.DOTALL)
             try:
                 msg = match.groups()[0].replace('%', '%%')
-            except:
+            except Exception:
                 msg = None
             t = _ARGCONVERTER.get(kw, literal_eval)
             if kw in _MANDATORY:
