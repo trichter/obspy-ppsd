@@ -1,6 +1,6 @@
 ## Command line script to calculate and plot probabilistic power spectral densities with ObsPy
 
-Download the file, make it execuatble and run it:
+Download the file, make it executable and run it:
 
 ```
 $ obspy-ppsd -h
